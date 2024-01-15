@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pregunta</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #ffc0cb; /* Fondo rosa */
+    }
+    #container {
+      text-align: center;
+    }
+    #no-btn {
+      position: absolute;
+      transition: left 0.5s ease, top 0.5s ease; /* animación de desplazamiento */
+    }
+    #agradecimiento {
+      display: none;
+      font-size: 24px; /* Tamaño de fuente más grande */
+      color: #ff1493; /* Color rosado más intenso */
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    function desplazarNo() {
+      var noBtn = document.getElementById('no-btn');
+      var maxX = window.innerWidth - noBtn.clientWidth;
+      var maxY = window.innerHeight - noBtn.clientHeight;
+
+      var randomX = Math.random() * maxX;
+      var randomY = Math.random() * maxY;
+
+      noBtn.style.left = randomX + "px";
+      noBtn.style.top = randomY + "px";
+    }
+
+    function mostrarAgradecimiento() {
+      var agradecimiento = document.getElementById('agradecimiento');
+      agradecimiento.style.display = 'block';
+
+      // Ocultar el mensaje después de 4 segundos (ajustable)
+      setTimeout(function() {
+        agradecimiento.style.display = 'none';
+      }, 4000); // Ajusta el tiempo en milisegundos
+    }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <h2>¿Me perdonas?</h2>
+    <form>
+      <button id="si-btn" onclick="mostrarAgradecimiento()">Sí</button>
+      <button id="no-btn" onmouseover="desplazarNo()">No</button>
+    </form>
+    <div id="agradecimiento">Gracias, te mando un beso.</div>
+  </div>
+</body>
+</html>
